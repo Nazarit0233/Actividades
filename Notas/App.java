@@ -1,14 +1,35 @@
 package Notas;
 import javax.swing.*;
-
 import Notas.Estudiante;
 public class App {
     public static void main(String[] args) {
-        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del estudiante:");
-        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del estudiante:"));
-        String carrera = JOptionPane.showInputDialog("Ingrese la carrera del estudiante:");
-
-        Estudiante estudiante = new Estudiante(nombre, edad, carrera);
-        JOptionPane.showMessageDialog(null, "Datos del estudiante:\n" + estudiante.toString());
+        int cantidadEstudiantes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de estudiantes:"));
+        /*double notaMayor = -1;*/
+        Estudiante[] estudiante = new Estudiante[cantidadEstudiantes];
+        for (int i = 0; i < cantidadEstudiantes; i++) {
+            estudiante[i] = new Estudiante();
+            estudiante[i].setNombre(JOptionPane.showInputDialog("Ingrese el nombre del estudiante "));
+            estudiante[i].setprimeraNota(Double.parseDouble(JOptionPane.showInputDialog("Ingrese la primera nota del estudiante ")));
+            estudiante[i].setsegundaNota(Double.parseDouble(JOptionPane.showInputDialog("Ingrese la segunda nota del estudiante ")));
+            estudiante[i].calcularPromedio();
+        }
+        for(int i=0; i<cantidadEstudiantes; i++){
+            estudiante[i].calcularPromedio();
+            JOptionPane.showMessageDialog(null, estudiante[i].getNombre()+ " : " + estudiante[i].getPromedio());
+        }
+        /*for(int i=0; i<cantidadEstudiantes; i++){
+            double primeraNota = estudiante[i].getprimeraNota();
+            double segundaNota = estudiante[i].getsegundaNota();
+            if (primeraNota > segundaNota) {
+                notaMayor = primeraNota;
+            } else {
+                notaMayor = segundaNota;
+            }
+            JOptionPane.showMessageDialog(null, "La nota mayor del estudiante " + estudiante[i].getNombre() + " es: " + notaMayor); 
+        }*/
+        for(int i=0; i<cantidadEstudiantes; i++){
+            double mayorNota = Math.max(estudiante[i].getprimeraNota(), estudiante[i].getsegundaNota());
+            JOptionPane.showMessageDialog(null, "La nota mayor del estudiante " + estudiante[i].getNombre() + " es: " + mayorNota);
+        }
     }
 }

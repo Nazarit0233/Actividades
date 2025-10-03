@@ -1,13 +1,19 @@
 package Notas;
 public class Estudiante {
     private String nombre;
-    private int edad;
-    private String carrera;
+    private double primeraNota;
+    private double segundaNota;
+    private double promedio;
+
+    public Estudiante() {
+
+    }
 
     public Estudiante(String nombre, int edad, String carrera) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.carrera = carrera;
+        this.nombre = "";
+        this.primeraNota =0.0;
+        this.segundaNota =0.0;
+        this.promedio =0.0;
     }
 
     public String getNombre() {
@@ -18,28 +24,36 @@ public class Estudiante {
         this.nombre = nombre;
     }
 
-    public int getEdad() {
-        return edad;
+    public double getprimeraNota() {
+        return primeraNota;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setprimeraNota(double primeraNota) {
+        this.primeraNota = primeraNota;
+    }
+    
+    public double getsegundaNota() {
+        return segundaNota;
     }
 
-    public String getCarrera() {
-        return carrera;
+    public void setsegundaNota(double segundaNota) {
+        this.segundaNota = segundaNota;
     }
 
-    public void setCarrera(String carrera) {
-        this.carrera = carrera;
+    public double getPromedio() {
+        return promedio;
+    }
+
+    public void setPromedio(double promedio) {
+        this.promedio = promedio;
+    }
+
+    public void calcularPromedio() {
+        this.promedio = (primeraNota + segundaNota) / 2;
     }
 
     @Override
     public String toString() {
-        return "Estudiante{" +
-                "nombre='" + nombre + '\'' +
-                ", edad=" + edad +
-                ", carrera='" + carrera + '\'' +
-                '}';
+        return  nombre + " es el estudiante con mayor promedio del primer corte, con un promedio de: " + promedio;
     }
 }
