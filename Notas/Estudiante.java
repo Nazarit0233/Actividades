@@ -53,7 +53,7 @@ public class Estudiante {
         this.promedio = (primeraNota + segundaNota) / 2;
     }
 
-    /*
+    /*metodo 3
     public double calcularNotaMayor() {
         return Math.max(primeraNota, segundaNota);
     }
